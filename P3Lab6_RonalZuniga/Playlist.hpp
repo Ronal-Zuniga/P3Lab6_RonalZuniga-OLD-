@@ -16,8 +16,8 @@ class Playlist{
 		Playlist(string);
 		//~Playlist();
 		void operator+(const Cancion& c);
-		//void operator+(const Album& a);
-		void operator+(const Playlist& p);
+		void operator+(const Album&);
+		Playlist operator+(const Playlist& p);
 		void operator-(const Cancion& c);
 		void operator-(const Genero& g);
 		string getNombre();

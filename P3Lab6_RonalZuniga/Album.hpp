@@ -15,12 +15,14 @@ class Album{
 	public:
 		Album();
 		Album(string);
-		void operator+(const Cancion& c);
-		//Playlist operator*(const int n);
+		Album* operator+(Cancion* c);
+		//Playlist* operator*(const int n);
 		void setArtistaA();
 		string getNombre();
 		vector<Cancion*> getCanciones();
 		string getArtista();
+		void setCanciones(vector<Cancion*>);
+		void setNombre(string);
 		//~Album();
 };
 #endif

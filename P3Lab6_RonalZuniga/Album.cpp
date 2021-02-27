@@ -42,3 +42,21 @@ string Album::getNombre(){
 vector<Cancion*> Album::getCanciones(){
 	return this->canciones;
 }
+
+Album* Album::operator+(Cancion* c){
+	this->canciones.push_back(c);
+	Album* alb;
+	alb->setNombre(this->nombre);
+	alb->setCanciones(this->canciones);
+	return alb;
+}
+
+void Album::setCanciones(vector<Cancion*> c){
+	this->canciones = c;
+	setArtistaA();
+}
+
+void Album::setNombre(string _nombre){
+	this->nombre = _nombre;
+}
+

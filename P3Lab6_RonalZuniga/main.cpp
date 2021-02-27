@@ -15,6 +15,7 @@ int subMenuOP();
 int menuMult();
 int menuSum();
 int menuRest();
+int menuAlbum();
 
 int main(int argc, char** argv) {
 	int menuG;
@@ -149,7 +150,7 @@ int main(int argc, char** argv) {
 										cout << "Generos guardados" << endl;
 										for(int i = 0; i < generos.size(); i++) {
 											Genero* g = generos[i];
-											cout << g->getNombreG() << endl;
+											cout << i << ". " << g->getNombreG() << endl;
 											delete g;
 										}
 										cout << endl;
@@ -200,7 +201,7 @@ int main(int argc, char** argv) {
 										cout << "Generos guardados" << endl;
 										for(int i = 0; i < generos.size(); i++) {
 											Genero* g = generos[i];
-											cout << g->getNombreG() << endl;
+											cout << i << ". " << g->getNombreG() << endl;
 											delete g;
 										}
 										cout << endl;
@@ -302,7 +303,7 @@ int main(int argc, char** argv) {
 									case 2: {
 										cout << endl;
 										cout << "Playlist guardadas" << endl;
-										for(int i = 0; i < playlist.size(); i++){
+										for(int i = 0; i < playlist.size(); i++) {
 											Playlist* p = playlist[i];
 											cout << "Nombre: " << p->getNombre() << endl;
 											cout << "Canciones: ";
@@ -312,7 +313,7 @@ int main(int argc, char** argv) {
 												delete can;
 											}
 											cout << endl;
-											delete a;
+											delete p;
 										}
 										cout << endl;
 										cout << endl;
@@ -335,7 +336,7 @@ int main(int argc, char** argv) {
 							int mm;
 							while((mm = menuMult()) != 2) {
 								if(mm == 1) {
-
+									
 								}
 							}
 							break;
@@ -351,9 +352,79 @@ int main(int argc, char** argv) {
 										break;
 									}
 									case 3: {
+										int oa;
+										while((oa = menuAlbum()) != 3) {
+											switch(oa) {
+												case 1: {
+													cout << endl;
+													cout << "Albums guardados" << endl;
+													for(int i = 0; i < albums.size(); i++) {
+														Album* a = albums[i];
+														cout << i << ". " << a->getNombre() << endl;
+														delete a;
+													}
+													cout << endl;
+													int posa;
+													cout << "Ingrese la posicion del album: ";
+													cin >> posa;
+													cout << endl;
+													Album* aux = albums[posa];
+													/*Album a (aux->getNombre());
+													a.setCanciones(aux->getCanciones());*/
+													cout << "Canciones guardadas" << endl;
+													for(int i = 0; i<canciones.size(); i++) {
+														Cancion* can = canciones[i];
+														cout << i << ". " << can->getNombre() << endl;
+														delete can;
+													}
+													cout << endl;
+													int posc;
+													cout  << "Ingrese la posicion de la cancion: ";
+													cin >> posc;
+													cout << endl;
+													Cancion* song = canciones[posc];
+													//Cancion song2 (song->getNombre(), song->getArtista(), song->getGenero(), song->getDuracion()); 
+													Album* ab = aux + song;
+													albums[posa] = ab;
+													delete aux;
+													delete song;
+													delete ab;
+													cout << endl;
+													cout << endl;
+													break;
+												}
+												case 2: {
+													string posa;
+													cout << "Ingrese el nombre del album: ";
+													cin >> posa;
+													Album* a = new Album(posa);
+													cout << "Canciones guardadas" << endl;
+													for(int i = 0; i<canciones.size(); i++) {
+														Cancion* can = canciones[i];
+														cout << i << ". " << can->getNombre() << endl;
+														delete can;
+													}
+													cout << endl;
+													int posc;
+													cout  << "Ingrese la posicion de la cancion: ";
+													cin >> posc;
+													cout << endl;
+													Cancion* song = canciones[posc];
+													Album* ab = a + song;
+													albums[posa] = ab;
+													delete song;
+													delete a;
+													delete ab;
+													cout << endl;
+													cout << endl;
+													break;
+												}
+											}
+										}//fw
 										break;
 									}
 									case 4: {
+										
 										break;
 									}
 								}//fs
@@ -490,5 +561,14 @@ int menuRest() {
 	return opcion;
 }
 
+int menuAlbum() {
+	int opcion;
+	cout << "1. Agregar cancion a album existente" << endl;
+	cout << "2. Crear album y agregar cancion" << endl;
+	cout << "3. Salir" << endl;
+	cout << "Ingrese la opcion: ";
+	cin >> opcion;
+	return opcion;
+}
 
 
